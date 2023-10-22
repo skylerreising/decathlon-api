@@ -3,6 +3,12 @@ const app = express();
 const PORT = 8000;
 
 const decathlonEvents = {
+    "decathlon":{
+        "name": "Decathlon",
+        "eventNumber": 0,
+        "decathlonWorldRecordHolder": "Kevin Mayer",
+        "decathlonWorldRecord": "9126 points"
+    },
     "100 meter dash":{
         "name": "100 Meter Dash",
         "eventNumber": 1,
