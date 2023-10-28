@@ -1,6 +1,6 @@
 const express = require("express");
 const app = express();
-const PORT = 8000;
+const port = process.env.PORT || 8000;
 
 const decathlonEvents = {
     "decathlon":{
@@ -91,5 +91,5 @@ app.get("/api/:decathlonEvents", (req,res)=>{
 })
 
 app.listen(PORT, ()=>{
-    console.log(`The server is running on port ${PORT}`);
+    console.log(`The server is running on port ${port}`);
 })
