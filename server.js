@@ -90,6 +90,6 @@ app.get("/api/:decathlonEvents", (req,res)=>{
     }
 })
 
-app.listen(PORT, ()=>{
+app.listen(port, ()=>{
     console.log(`The server is running on port ${port}`);
 })
