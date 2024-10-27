@@ -83,7 +83,6 @@ app.get("/", (req,res)=>{
 
 app.get("/api/:decathlonEvents", (req,res)=>{
     let decathlonEventName = req.params.decathlonEvents.trim().toLowerCase().split(" ").join("");
-    console.log(decathlonEventName);
 
     let lowerCaseEvents = {};
     Object.keys(decathlonEvents).map((event)=>{
