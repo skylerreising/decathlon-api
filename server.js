@@ -9,37 +9,37 @@ const decathlonEvents = {
         "decathlonWorldRecordHolder": "Kevin Mayer",
         "decathlonWorldRecord": "9126 points"
     },
-    "100 meter dash":{
+    "100MeterDash":{
         "name": "100 Meter Dash",
         "eventNumber": 1,
         "decathlonWorldRecordHolder": "Damian Warner",
         "decathlonWorldRecord": "10.12 seconds"
     },
-    "long jump":{
+    "longJump":{
         "name": "Long Jump",
         "eventNumber": 2,
         "decathlonWorldRecordHolder": "Simon Ehammer",
         "decathlonWorldRecord": "8.45 meters or 27 feet 8.5 inches"
     },
-    "shot put":{
+    "shotPut":{
         "name": "Shot Put",
         "eventNumber": 3,
         "decathlonWorldRecordHolder": "Edy Hubacher",
         "decathlonWorldRecord": "19.17 meters or 62 feet 10.5 inches"
     },
-    "high jump":{
+    "highJump":{
         "name": "High Jump",
         "eventNumber": 4,
         "decathlonWorldRecordHolder": "Derek Drouin",
         "decathlonWorldRecord": "2.28 meters or 7 feet 5.75 inches"
     },
-    "400 meter dash":{
+    "400MeterDash":{
         "name": "400 Meter Dash",
         "eventNumber": 5,
         "decathlonWorldRecordHolder": "Ashton Eaton",
         "decathlonWorldRecord": "45.00 seconds"
     },
-    "110 meter hurdles":{
+    "110MeterHurdles":{
         "name": "110 Meter Hurdles",
         "eventNumber": 6,
         "decathlonWorldRecordHolder": "Damian Warner",
@@ -51,7 +51,7 @@ const decathlonEvents = {
         "decathlonWorldRecordHolder": "Bryan Clay",
         "decathlonWorldRecord": "55.87 meters or 183 feet 3.5 inches"
     },
-    "pole vault":{
+    "poleVault":{
         "name": "Pole Vault",
         "eventNumber": 8,
         "decathlonWorldRecordHolder": "Tim Lobinger",
@@ -63,7 +63,7 @@ const decathlonEvents = {
         "decathlonWorldRecordHolder": "Peter Blank",
         "decathlonWorldRecord": "79.80 meters or 261 feet 9.5 inches"
     },
-    "1500 meter run":{
+    "1500MeterRun":{
         "name": "1,500 Meter Run",
         "eventNumber": 10,
         "decathlonWorldRecordHolder": "Robert Baker",
@@ -82,9 +82,16 @@ app.get("/", (req,res)=>{
 })
 
 app.get("/api/:decathlonEvents", (req,res)=>{
-    const decathlonEventName = req.params.decathlonEvents.toLowerCase();
-    if(decathlonEvents[decathlonEventName]){
-        res.json(decathlonEvents[decathlonEventName])
+    let decathlonEventName = req.params.decathlonEvents.trim().toLowerCase().split(" ").join("");
+    console.log(decathlonEventName);
+
+    let lowerCaseEvents = {};
+    Object.keys(decathlonEvents).map((event)=>{
+        lowerCaseEvents[event.toLowerCase()] = decathlonEvents[event];
+    })
+
+    if(lowerCaseEvents[decathlonEventName]){
+        res.json(lowerCaseEvents[decathlonEventName])
     }else{
         res.json(decathlonEvents["unknown"])
     }
